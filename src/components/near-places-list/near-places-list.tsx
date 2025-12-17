@@ -1,19 +1,19 @@
 import { OffersList } from "../../types/offer"
 import { PlaceCard } from "../place-card/place-card";
 
-type CitiesCardListProps = {
+type NearPlacesCardListProps = {
     offersList: OffersList[]
 }
 
-function CitiesCardList({ offersList }: CitiesCardListProps) {
+function NearPlacesCardList({ offersList }: NearPlacesCardListProps) {
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className="near-places__list places__list">
       {offersList.map((offer) => (
         <PlaceCard
           key={offer.id}
           {...offer}
-          cardClassName="cities__card"
-          imgWrapperClass="cities__image-wrapper"
+          cardClassName="near-places__card"
+          imgWrapperClass="near-places__image-wrapper"
           imgWidth={260}
           imgHeight={200}
         />
@@ -22,4 +22,4 @@ function CitiesCardList({ offersList }: CitiesCardListProps) {
   );
 }
 
-export { CitiesCardList };
+export { NearPlacesCardList };
