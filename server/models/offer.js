@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import {User} from './user.js';
+import Comment from './comment.js';
 
 
 class Offer extends Model {}
@@ -93,6 +94,10 @@ Offer.init({
 
 // Связь с пользователем
 Offer.belongsTo(User, { as: 'author', foreignKey: 'authorId' });
+Offer.hasMany(Comment, { 
+  as: 'comments', 
+  foreignKey: 'offerId' 
+});
 
 
 export {Offer};
