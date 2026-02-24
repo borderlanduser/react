@@ -102,4 +102,46 @@ async function getFullOffer(req, res, next) {
   }
 }
 
-export { getAllOffers, createOffer, getFullOffer };
+async function getFavoriteOffers(req, res, next) {
+  try {
+    const userId = req.user.id; // ID текущего пользователя из authMiddleware
+    // Находим пользователя с его избранными офферами
+    const user = await User.findByPk(userId, {
+      include: [{
+        model: Offer,
+        as: 'favoriteOffers', // Название связи в модели
+        through: { attributes: [] } // Не показывать данные связующей таблицы
+      }]
+    });
+    if (!user) {
+      return next(ApiError.notFound('Пользователь не найден'));
+    }
+    // Адаптируем каждый оффер для клиента (как в getAllOffers)
+    const adaptedOffers = user.favoriteOffers.map(adaptOfferToClient);
+    // Возвращаем адаптированный список
+    res.status(200).json(adaptedOffers);
+  } catch (error) {
+    console.error('Не удалось получить избранные предложения:', error);
+    next(ApiError.internal('Не удалось получить избранные предложения'));
+  }
+}
+
+const toggleFavorite = async (req, res, next) => {
+  try {
+    const { offerId, status } = req.params;
+
+    const offer = await Offer.findByPk(offerId);
+    if (!offer) {
+    return next(ApiError.notFound('Предложение не найдено'));
+    }
+
+    offer.isFavorite = status === '1';
+    await offer.save();
+
+    res.json(offer);
+  } catch (error) {
+    next(ApiError.internal('Ошибка при обновлении статуса избранного'));
+  }
+};
+
+export { getAllOffers, createOffer, getFullOffer, getFavoriteOffers, toggleFavorite};

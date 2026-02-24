@@ -1,14 +1,11 @@
 import { Router } from 'express';
-import upload from '../middleware/upload.js';
-import {createOffer, getAllOffers, getFullOffer } from '../controllers/offerController.js';
-
+import offerRouter from './offerRoutes.js';
+import userRotes from './userRoutes.js';
+import reviewRouter from './reviewRoutes.js';
 const router = new Router();
 
-router.get('/offers', getAllOffers);
-router.get('/offers/:id', getFullOffer);
-router.post('/offers', upload.fields([
-    { name: 'previewImage', maxCount: 1 },
-    { name: 'photos', maxCount: 6 }
-]), createOffer);
+router.use('/', offerRouter);
+router.use('/', userRotes);
+router.use('/comments', reviewRouter);
 
-export default router;
+export default router ;

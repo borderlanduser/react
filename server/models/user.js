@@ -1,9 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
-
 class User extends Model {}
-
 
 User.init({
   username: {
@@ -24,8 +22,6 @@ User.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-
-
   },
   userType: {
     type: DataTypes.ENUM,
@@ -42,7 +38,4 @@ User.init({
   tableName: 'users',
 });
 
-
-export {User};
-
-
+export { User };
