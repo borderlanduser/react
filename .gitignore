@@ -1,0 +1,57 @@
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Vite ---
+dist/
+.vite/
+.vite-temp/
+*.local
+
+# --- Logs ---
+logs/
+*.log
+*.log.*
+log/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# --- Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- System files ---
+.DS_Store
+Thumbs.db
+
+# --- TypeScript ---
+*.tsbuildinfo
+
+# --- Environment files ---
+.env
+.env.*
+!.env.example
+
+# --- Coverage ---
+coverage/
+*.lcov
+
+# --- Project specifics ---
+# Кэш Vite, временные файлы, которые мы видим в структуре
+client/node_modules/
+client/.vite/
+client/.vite-temp/
+
+# Игнорируем корневой node_modules (ты запускаешь проект в /client)
+node_modules/
+TZ/
+markup/
+
+created-users.txt/
