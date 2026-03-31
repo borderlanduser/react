@@ -61,12 +61,13 @@ function CitiesCard({ offer, onMouseEnter, onMouseLeave }: CitiesCardProps) {
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Offer.replace(':id', offer.id)}>
           <img
-            className="place-card__image"
-            src={offer.images[0]}
-            width="260"
-            height="200"
-            alt={offer.title}
-          />
+          className="place-card__image"
+          src={offer.images[0]}
+          width="260"
+          height="200"
+          alt={offer.title}
+          style={{ objectFit: 'cover', height: '200px' }}
+        />
         </Link>
       </div>
       <div className="place-card__info">

@@ -26,6 +26,7 @@ function FavoriteCard({ offer }: FavoriteCardProps) {
             width="150"
             height="110"
             alt={offer.title}
+            style={{ objectFit: 'cover', width: '150px', height: '110px' }}
           />
         </a>
       </div>
