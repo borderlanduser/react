@@ -38,6 +38,7 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+server/.env
 
 # --- Coverage ---
 coverage/
@@ -55,3 +56,4 @@ TZ/
 markup/
 
 created-users.txt/
+
